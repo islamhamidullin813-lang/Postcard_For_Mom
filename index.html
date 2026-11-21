@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Открытка для мамы</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 12px;
+            overflow-x: hidden;
+        }
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 32px 20px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            animation: appear 1s ease;
+        }
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f8bbd0;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            color: #d81b60;
+            font-size: 2em;
+            margin: 10px 0;
+            line-height: 1.2;
+        }
+        .message {
+            font-size: 1.25em;
+            color: #555;
+            line-height: 1.6;
+            margin: 20px 0;
+            white-space: pre-line;
+        }
+        .signature {
+            color: #888;
+            font-style: italic;
+            margin-top: 20px;
+        }
+        @media (max-width: 400px) {
+            .photo { width: 150px; height: 150px; }
+            h1 { font-size: 1.6em; }
+            .message { font-size: 1.1em; }
+            .card { padding: 24px 16px; border-radius: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="photo.jpg" alt="Мама" class="photo">
+        <h1>Дорогая мама!</h1>
+        <div class="message">
+            Дорогая мама!<br><br>
+              Спасибо тебе за твою любовь, заботу и терпение. За то, что всегда выслушаешь, поддержишь и найдёшь нужные слова. Я очень ценю каждое мгновение, проведённое с тобой.<br>
+              Ты — самый близкий и дорогой человек в моей жизни. Я тебя очень люблю!<br>
+              Спасибо, что ты всегда рядом. Я тебя очень люблю!
+        </div>
+        <p class="signature">Твой сыночек ❤️</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '-50px';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
+                heart.style.pointerEvents = 'none';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        });
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes fall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }`;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
